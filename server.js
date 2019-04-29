@@ -1,8 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt-nodejs');
+/*cross origin request must install cors */
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
+
+/*cross origin request must install cors */
+app.use(cors())
 
 const database = {
 	users: [
@@ -34,12 +40,13 @@ app.get('/', (req, res) => {
 app.post('/signin', (req, res) => {
 	if (req.body.email === database.users[0].email &&
 			req.body.password === database.users[0].password) {
-		res.json('correct email and password');
+		res.json(database.users[0]);
 	} else {
 		res.status(400).json('error logging in');
 	}
 })
 
+/*There is a bug in register ignoring empty input, fix it later */
 /*register recieve post */
 app.post('/register', (req, res) => {
 	const { email, name, password } = req.body;
