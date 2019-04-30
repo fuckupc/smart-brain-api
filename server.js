@@ -30,7 +30,7 @@ app.use(cors())
 
 /*root recieve get */
 app.get('/', (req, res) => {
-	res.send(database.users);
+	res.send('It is working');
 })
 
 /*signin recieve post */
