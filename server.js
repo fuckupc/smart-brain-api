@@ -50,5 +50,5 @@ app.put('/count', (req, res) => { count.handleCount(req, res, db) })
 app.post('/image', (req, res) => { image.handleApiCall(req, res) })
 
 app.listen(process.env.PORT || 3000, () => {
-	console.log(`The server is listening on port ${process.env.PORT || 3000}`);
+	console.log(`The server is listening on port ${process.env.PORT}`);
 });
